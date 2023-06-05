@@ -26,6 +26,6 @@ server.use("/fooditems", foodItemRouter.routes);
 server.use("/order", OrderItemRouter);
 // server.use(express.static(path.resolve(__dirname, "build")));
 
-server.listen(8080, () => {
+server.listen(process.env.PORT ||  8080, () => {
   console.log("server started");
 });
