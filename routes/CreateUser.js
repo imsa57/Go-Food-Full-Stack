@@ -18,15 +18,18 @@ routes.post(
     if (!result.isEmpty()) {
       return res.status(400).json({ errors: result.array() });
     }
+    const userData = await User.findOne({ email: req.body.email });
+
+    if (userData) return res.json("User already register !");
 
     const salt = await bcrypt.genSalt(10);
     const secPassword = await bcrypt.hash(req.body.password, salt);
     try {
       const newUser = await new User({ ...req.body, password: secPassword });
       newUser.save();
-      res.json(newUser);
+      res.json({ success: true });
     } catch (error) {
-      res.json(error);
+      res.json({ success: false });
     }
   }
 );

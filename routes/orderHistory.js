@@ -27,6 +27,10 @@ routes
 
   .post("/myorderdata", async (req, res) => {
     const data = await order_histries.findOne({ email: req.body.email });
-    res.json(data.orderData);
+    if (data?.orderData) {
+      res.json(data?.orderData);
+    } else {
+      res.json("No previous Order!");
+    }
   });
 module.exports = routes;
