@@ -11,7 +11,7 @@
     ],
     "routes": [
         {
-            "src": "/products",
+            "src": "/fooditems",
             "dest": "index.js"
         },
         {
@@ -19,7 +19,7 @@
             "dest": "index.js"
         },
         {
-            "src": "/add",
+            "src": "/order",
             "dest": "build/index.html"
         },
         {
